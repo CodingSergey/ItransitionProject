@@ -9,7 +9,7 @@ app.use(cors());
 
 app.get("/", (req,res)=>{
     console.log("requested");
-    res.send({status:"ok"});
+    res.send({status:"cock"});
 })
  
 app.listen(port, ()=>{
