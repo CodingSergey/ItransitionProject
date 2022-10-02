@@ -3,7 +3,7 @@ const cors = require("cors");
 const auth  = require("./routes/auth");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://alex:1234@cluster0.0nmnmgi.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://alex:1234@cluster0.0nmnmgi.mongodb.net/?retryWrites=true&w=majority")
 
 let port = process.env.PORT || 8080;
 
