@@ -5,8 +5,8 @@ const Account = require("../models/Account");
 const router = express.Router();
 
 router.post("/register", 
-    body("email").isEmail(),
-    body("password").isLength({min: 6}),
+    body("_email").isEmail(),
+    body("_password").isLength({min: 6}),
 async (req,res) => {
     const {_username, _email, _password} = req.body;
     const errors = validationResult(req);
