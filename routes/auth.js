@@ -2,7 +2,6 @@ const express = require("express");
 const {body, validationResult} = require("express-validator");
 const {createUser, uniqueCredentials} = require("../authorization/validation");
 const router = express.Router();
-const Account = require("../models/Account");
 
 router.post("/register", 
     body("email").isEmail(),
