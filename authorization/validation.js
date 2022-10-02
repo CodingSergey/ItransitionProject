@@ -10,8 +10,8 @@ const createUser= (username, email, password) => {
     });
     return user
 }
-const uniqueCredentials = (email) => {
-    const acc = Account.findOne().where("email").equals(email).exec();
+const uniqueCredentials = async (email) => {
+    const acc = await Account.findOne().where({email: email}).exec();
     if(acc) return false;
 }
 module.exports.createUser = createUser;
