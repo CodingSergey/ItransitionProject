@@ -1,14 +1,13 @@
 const Account = require("../models/Account");
 
-const createUser= (_username, _email, _password) => {
-    const user = Account.create({
+const createUser=async  (_username, _email, _password) => {
+    await Account.create({
         username: _username,
-        email: _email,
         password: _password,
-        blocked: false,
-        admin: false
+        email: _email,
+        admin: false,
+        blocked: false
     });
-    return user
 }
 const uniqueCredentials = async (email) => {
     const acc = await Account.findOne().where({email: email}).exec();
