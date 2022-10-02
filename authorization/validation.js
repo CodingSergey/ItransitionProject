@@ -1,6 +1,6 @@
 const Account = require("../models/Account");
 
-const createUser= (username, email, password) => {
+const createUser= (_username, _email, _password) => {
     const user = Account.create({
         username: _username,
         email: _email,
