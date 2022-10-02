@@ -14,6 +14,6 @@ async (req,res) => {
     if(!Account.exists({email: _email})) return res.status(400).json({error: "Email already exists"});
     await createUser(_username,_email,_password);
     const _token = jwt.sign({username: _username}, "sodposajfspfsvfaoxjq28343r4fsd");
-    return res.json({status: "ok", token: _token});
+    return res.json({status: "ok", token: _token});  
 })
 module.exports = router;
