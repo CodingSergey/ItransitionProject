@@ -4,7 +4,7 @@ const createUser= (username, email, password) => {
 
 }
 const uniqueCredentials = (email) => {
-    const acc = Account.findOne({email: email}).exec();
+    const acc = Account.findOne().where("email").equals(email).exec();
     if(acc) return false;
 }
 module.exports.createUser = createUser;
