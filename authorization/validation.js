@@ -2,9 +2,9 @@ const Account = require("../models/Account");
 
 const createUser= (username, email, password) => {
     const user = Account.create({
-        username: username,
-        email: email,
-        password: password,
+        username: _username,
+        email: _email,
+        password: _password,
         blocked: false,
         admin: false
     });
