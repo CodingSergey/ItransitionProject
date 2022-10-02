@@ -1,9 +1,9 @@
 const Account = require("../models/Account");
 
-function createUser() {
+const createUser= (username, email, password) => {
 
 }
-function uniqueCredentials(username,email) {
+const uniqueCredentials = (username,email) => {
     const acc = Account.find(acc => acc.email==email || acc.username == username);
     if(acc) return false;
 }
