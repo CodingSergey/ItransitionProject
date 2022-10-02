@@ -1,6 +1,6 @@
 const Account = require("../models/Account");
 
-const createUser=async  (_username, _email, _password) => {
+const createUser = async (_username, _email, _password) => {
     await Account.create({
         username: _username,
         password: _password,
@@ -10,4 +10,3 @@ const createUser=async  (_username, _email, _password) => {
     });
 }
 module.exports.createUser = createUser;
-module.exports.uniqueCredentials = uniqueCredentials;
