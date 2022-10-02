@@ -13,6 +13,6 @@ async (req,res) => {
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
     if(!Account.exists({email: _email})) return res.status(400).json({error: "Email already exists"});
     await createUser(_username,_email,_password);
-    return res.json({status: "ok");
+    return res.json({status: "ok"});
 })
 module.exports = router;
