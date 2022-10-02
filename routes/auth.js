@@ -12,6 +12,6 @@ async (req,res) => {
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
     if(!uniqueCredentials(email)) return res.status(400).json({error: "Email already exists"});
     const user = createUser(username,email,password);
-    res.json({status: "ok", user: user});
+    return res.json({status: "ok", user: user});
 })
 module.exports = router;
