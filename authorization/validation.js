@@ -5,7 +5,7 @@ const createUser = async (_username, _email, _password) => {
         username: _username,
         password: _password,
         email: _email,
-        admin: false,
+        admin: false,   
         blocked: false
     });
 }
