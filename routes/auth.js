@@ -10,7 +10,7 @@ async (req,res) => {
     const {username, email, password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
-    if(!uniqueCredentials(username,email)) return res.status(400).json({error: "Username or email already exist"});
+    if(!uniqueCredentials(email)) return res.status(400).json({error: "Email already exists"});
     createUser(username,email,password);
     res.json({status: "ok"});
 })

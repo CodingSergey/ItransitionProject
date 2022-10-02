@@ -3,8 +3,8 @@ const Account = require("../models/Account");
 const createUser= (username, email, password) => {
 
 }
-const uniqueCredentials = (username,email) => {
-    const acc = Account.find(acc => acc.email==email || acc.username == username).exec();
+const uniqueCredentials = (email) => {
+    const acc = Account.find({email:email});
     if(acc) return false;
 }
 module.exports.createUser = createUser;
