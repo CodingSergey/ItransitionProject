@@ -4,6 +4,7 @@ const {createUser} = require("../userManagement/createUser");
 const Account = require("../models/Account");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+
 router.post("/register", 
     body("_email").isEmail(),
     body("_password").isLength({min: 6}),
@@ -16,4 +17,13 @@ async (req,res) => {
     const _token = jwt.sign({username: _username, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});  
 })
+
+router.post("/login", async (req,res) => {
+    const {_email, _password} = req.body;
+    const user = findUser(_email, _password);
+    if(!user) return res.json({error: "Bad credentials"});
+    const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
+    return res.json({status: "ok", token: _token});
+});
+
 module.exports = router;
