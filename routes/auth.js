@@ -12,7 +12,7 @@ async (req,res) => {
     const {_username, _email, _password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
-    if(!Account.exists({email: _email, username: _username})) return res.status(400).json({error: "Email already exists"});
+    if(Account.exists({email: _email, username: _username})) return res.status(400).json({error: "Email already exists"});
     await createUser(_username,_email,_password);
     const _token = jwt.sign({username: _username, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});  
