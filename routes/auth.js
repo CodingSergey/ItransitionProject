@@ -1,7 +1,7 @@
 const express = require("express");
 const {body, validationResult} = require("express-validator");
 const {createUser} = require("../userManagement/createUser");
-const {findUser} = require("../userManagement/findUser");
+const findUser = require("../userManagement/findUser");
 const Account = require("../models/Account");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
