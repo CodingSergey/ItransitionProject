@@ -13,7 +13,7 @@ async (req,res) => {
     const {_username, _email, _password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
-    if(Account.exists({email: _email, username: _username},
+    if(!Account.exists({email: _email, username: _username},
         function(err,doc) {
             return doc;
         }    
