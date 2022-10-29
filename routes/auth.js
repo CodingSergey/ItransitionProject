@@ -13,11 +13,7 @@ async (req,res) => {
     const {_username, _email, _password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
-    if(!Account.exists({email: _email, username: _username},
-        function(err,doc) {
-            return doc;
-        }    
-        )) return res.json({status: "ok", token: "repeat"});
+    if(Account.exists({email: _email, username: _username})) return res.json({status: "ok", token: "repeat"});
     await createUser(_username,_email,_password);
     const _token = jwt.sign({username: _username, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});  
@@ -30,5 +26,12 @@ router.post("/login", async (req,res) => {
     const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});
 });
+router.post("/exists", async (req,res)=> {
+    const {_email,_username} = req.body;
+    Account.exists({email: _email, username: _username}, (err,result)=> {
+        if(err) res.send(err)
+        else res.send(result)
+    })
+})
 
 module.exports = router;
