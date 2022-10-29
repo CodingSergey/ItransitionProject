@@ -28,8 +28,10 @@ router.post("/login", async (req,res) => {
 router.post("/exists", async (req,res)=> {
     const {_email,_username} = req.body;
     Account.exists({email: _email}, (err,result)=> {
-        if(err) res.send(err)
-        else res.send(result)
+        if(err) res.send(err);
+        else {
+            result? res.send(result) : res.end();
+        };
     })
 })
 
