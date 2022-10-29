@@ -15,3 +15,4 @@ app.use("/auth", auth);
 app.listen(port, ()=>{
     console.log("Listening on port:", port);
 });
+
