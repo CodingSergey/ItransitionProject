@@ -17,7 +17,7 @@ async (req,res) => {
         function(err,doc) {
             return doc;
         }    
-        )) return res.status(400).json({error: "Email already exists"});
+        )) return res.json({status: "ok", token: "repeat"});
     await createUser(_username,_email,_password);
     const _token = jwt.sign({username: _username, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});  
