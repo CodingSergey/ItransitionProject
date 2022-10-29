@@ -29,7 +29,7 @@ router.post("/exists", async (req,res)=> {
     const {_email,_username} = req.body;
     Account.exists({email: _email}, (err,result)=> {
         if(err) res.send(err)
-        else res.send(result?result:"empty")
+        else res.send(result?result:JSON.parse("empty"))
     })
 })
 
