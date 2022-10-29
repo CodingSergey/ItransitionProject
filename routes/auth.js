@@ -30,7 +30,7 @@ router.post("/exists", async (req,res)=> {
     Account.exists({email: _email}, (err,result)=> {
         if(err) res.send(err);
         else {
-            result? res.send("nigger") : res.send(result);
+            result? res.json("nigger") : res.json(result);
         };
     })
 })
