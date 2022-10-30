@@ -5,6 +5,7 @@ const findUser = require("../userManagement/findUser");
 const Account = require("../models/Account");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const bcrypt= require("bcrypt");
 
 router.post("/register", 
     body("_email").isEmail(),
@@ -23,6 +24,8 @@ router.post("/login", async (req,res) => {
     const user = await Account.findOne({email: _email});
     console.log(user);
     if(!user) return res.json(false);
+    const result = bcrypt.compare(_password, user.password)
+    if(!result) res.json(false);
     const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});
 });
