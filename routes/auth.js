@@ -21,7 +21,8 @@ async (req,res) => {
 router.post("/login", async (req,res) => {
     const {_email, _password} = req.body;
     const user = Account.find({email: _email});
-    return res.send({_user:user});
+    if(user) res.send("exists");
+    else res.send("not exists");
     const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});
 });
