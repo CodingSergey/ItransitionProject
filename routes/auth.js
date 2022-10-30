@@ -20,9 +20,9 @@ async (req,res) => {
 
 router.post("/login", async (req,res) => {
     const {_email, _password} = req.body;
-    const user = Account.find({email: _email});
-    if(user===true) return res.send("exists");
-    else return res.send("not exists");
+    const user = await Account.findOne({email: _email});
+    console.log(user);
+    if(!user) return res.json(false);
     const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});
 });
