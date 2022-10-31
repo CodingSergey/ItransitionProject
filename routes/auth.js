@@ -22,11 +22,11 @@ async (req,res) => {
 router.post("/login", async (req,res) => {
     const {_email, _password} = req.body;
     const user = await Account.findOne({email: _email});
-    console.log(user);
+    console.log(user.username);
     if(!user) return res.json(false);
     const result = bcrypt.compare(_password, user.password)
     if(!result) res.json(false);
-    const _token = jwt.sign({username: user.username, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
+    const _token = jwt.sign({username: user.username,admin: user.admin, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});
 });
 router.post("/exists", async (req,res)=> {
@@ -37,6 +37,17 @@ router.post("/exists", async (req,res)=> {
             result? res.json("exists") : res.json("not exists");
         };
     })
+})
+router.post("/check", async(req,res)=> {
+    const {token} = req.body;
+    if(token) {
+        const decode = jwt.verify(token, "sodposajfspfsvfaoxjq28343r4fsd", function(err,result) {
+            if(err) return res.json({login:false});
+        })
+        res.json({login:true});
+    }else{
+        res.json({login:false});
+    }
 })
 
 module.exports = router;
