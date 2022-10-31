@@ -22,3 +22,4 @@ router.post("/addcollection", authorize, async (req,res)=> {
     });
 })
 module.exports=router;
+
