@@ -8,7 +8,7 @@ router.get("/allUsers",authorize, async (req,res) => {
 });
 router.delete("/deleteuser/:id", authorize, async(req,res)=> {
     const id = req.params["id"];
-    Account.remove({_id: id});
+    Account.deleteOne({_id: id});
     res.send({status: id});
 })
 module.exports=router;
