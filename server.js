@@ -11,7 +11,7 @@ let port = process.env.PORT || 8080;
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin: "https://beamish-travesseiro-0c405b.netlify.app",}));
+app.use(cors({origin: "https://itransitionproject.vercel.app",}));
 app.use("/auth", auth);
 app.use("/collection", collection);
 app.use("/users",users);
