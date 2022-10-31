@@ -9,7 +9,7 @@ function authenticateToken(req, res, next) {
   jwt.verify(token,"sodposajfspfsvfaoxjq28343r4fsd", (err, user) => {
     console.log(err);
 
-    if (err) return res.send({auth: false});
+    if (err) return res.send({auth: false, _token: token});
 
     req.user = user
 
