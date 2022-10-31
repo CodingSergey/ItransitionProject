@@ -17,7 +17,7 @@ router.post("/addcollection", authorize, async (req,res)=> {
             });
             return res.send({status: "ok"});
         } else {
-            return res.send("exists");
+            return res.send({exists:true});
         }
     });
 })
