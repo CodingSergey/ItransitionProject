@@ -5,8 +5,7 @@ const authorize = require("../middleware/authorization");
 const Collection = require("../models/Collection");
 router.post("/addcollection", authorize, async (req,res)=> {
     const {_name,_description,_topic,_author}=req.body;
-    const c = Collection.find({name: _name, author: _author}).count();
-    if(c>0) return res.send("exists");
+    if(Collection.find({name: _name}).count()) return res.send("exists");
     await Collection.create({
         name:_name,
         description: _description,
