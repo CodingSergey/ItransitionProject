@@ -21,5 +21,12 @@ router.post("/addcollection", authorize, async (req,res)=> {
         }
     });
 })
+router.post("/usercollections", authorize, async (req,res)=> {
+    const {_author} = req.body;
+    var query = Collection.find({author: _author}).lean();
+    query.exec(function(err,result) {
+        res.send(result);
+    })
+})
 module.exports=router;
 
