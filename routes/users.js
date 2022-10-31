@@ -13,10 +13,10 @@ router.delete("/deleteuser/:id", authorize, async(req,res)=> {
 })
 router.put("/toggleblock/:id", authorize, async(req,res)=> {
     const id= req.params["id"];
-    Account.findById(id, function(err,account) {
-        account.blocked= !account.blocked;
+    Account.findOne({_id: id}, function(err,account) {
+        account.blocked = !account.blocked;
         account.save();
-    }) 
+    })
     res.send({status: "ok"});
 })
 module.exports=router;
