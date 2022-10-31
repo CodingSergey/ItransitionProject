@@ -9,7 +9,7 @@ router.post("/addcollection", authorize, (req,res)=> {
     if(c.name) return res.json("exists");
     Collection.create({
         name:_name,
-        description: description,
+        description: _description,
         topic: _topic
     })
     res.send({status: "ok"});
