@@ -7,7 +7,6 @@ function authenticateToken(req, res, next) {
   if (token == null) return res.send({auth: false, _token: token});
 
   jwt.verify(token,"sodposajfspfsvfaoxjq28343r4fsd", (err, user) => {
-    console.log(err);
 
     if (err) return res.send({auth: false, _token: token});
 
