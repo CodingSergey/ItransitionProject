@@ -11,4 +11,8 @@ router.delete("/deleteuser/:id", authorize, async(req,res)=> {
     Account.deleteOne({_id: id}).exec();
     res.send({status: id});
 })
+router.put("/toggleblock/:id", authorize, async(req,res)=> {
+    const id= req.params["id"];
+    Account.findByIdAndUpdate({_id: id}, {blocked: !blocked});  
+})
 module.exports=router;
