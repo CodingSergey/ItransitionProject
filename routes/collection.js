@@ -13,7 +13,8 @@ router.post("/addcollection", authorize, async (req,res)=> {
                 description: _description,
                 topic: _topic,
                 author: _author,
-                date: Date.now()
+                date: Date.now(),
+                items: 0
             });
             return res.send({status: "ok"});
         } else {
