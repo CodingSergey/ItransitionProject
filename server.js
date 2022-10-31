@@ -10,7 +10,7 @@ let port = process.env.PORT || 8080;
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin:"*"}));
+app.use(cors({origin:["https://itransitionproject.vercel.app/login","https://localhost:8080"]}));
 app.use("/auth", auth);
 app.listen(port, ()=>{
     console.log("Listening on port:", port);
