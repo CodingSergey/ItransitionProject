@@ -1,4 +1,5 @@
-import { model, Schema } from "mongoose";
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const CollectionSchema= new Schema({
     name: {type: String, required: true},
