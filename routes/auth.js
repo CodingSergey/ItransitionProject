@@ -14,7 +14,7 @@ async (req,res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
     await createUser(_username,_email,_password);
-    const _token = jwt.sign({username: _username, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
+    const _token = jwt.sign({username: _username, admin: false, exp: Date.now() + 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
     return res.json({status: "ok", token: _token});  
 })
 
