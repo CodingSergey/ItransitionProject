@@ -16,6 +16,3 @@ app.use("/collection", collection);
 app.listen(port, ()=>{
     console.log("Listening on port:", port);
 });
-
-
-
