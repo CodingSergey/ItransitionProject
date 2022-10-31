@@ -22,6 +22,7 @@ router.post("/login", async (req,res) => {
     const {_email, _password} = req.body;
     const user = await Account.findOne({email: _email});
     if(!user) return res.json(false);
+    if(user.blocked) return res.json(false);
     const result = bcrypt.compare(_password, user.password)
     if(!result) res.json(false);
     const _token = jwt.sign({username: user.username,admin: user.admin, exp: Date.now()+ 30 * 60000}, "sodposajfspfsvfaoxjq28343r4fsd");
