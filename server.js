@@ -10,7 +10,7 @@ let port = process.env.PORT || 8080;
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin: "https://master--beamish-travesseiro-0c405b.netlify.app/login",}));
+app.use(cors({origin: "https://master--beamish-travesseiro-0c405b.netlify.app",}));
 app.use("/auth", auth);
 app.use("/collection", collection);
 app.listen(port, ()=>{
