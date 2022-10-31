@@ -6,7 +6,7 @@ const Collection = require("../models/Collection");
 router.post("/addcollection", authorize, async (req,res)=> {
     const {_name,_description,_topic,_author}=req.body;
     const c = Collection.exists({name: _name, author: _author})
-    if(c) res.send("exists");
+    if(!c) return res.send("exists");
     await Collection.create({
         name:_name,
         description: _description,
