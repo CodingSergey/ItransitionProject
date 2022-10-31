@@ -5,7 +5,7 @@ const authorize = require("../middleware/authorization");
 const Collection = require("../models/Collection");
 router.post("/addcollection", authorize, (req,res)=> {
     const {_name,_description,_topic}=req.body;
-    const c = Collection.findOne({name: _name});
+    const c = Collection.findOne({name: _name}).lean();
     if(c) return res.json("exists");
     Collection.create({
         name:_name,
