@@ -8,5 +8,5 @@ const CollectionSchema= new Schema({
     topic:{type: String, required:true}
 })
 
-const Collection = model("Collection", CollectionSchema);
+const Collection = mongoose.model("Collection", CollectionSchema);
 module.exports=Collection;
