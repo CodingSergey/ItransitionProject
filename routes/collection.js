@@ -12,7 +12,7 @@ router.post("/addcollection", authorize, async (req,res)=> {
         description: _description,
         topic: _topic,
         author: _author
-    })
+    });
     res.send({status: "ok"});
 })
 module.exports=router;
