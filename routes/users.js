@@ -19,4 +19,12 @@ router.put("/toggleblock/:id", authorize, async(req,res)=> {
     })
     res.send({status: "ok"});
 })
+router.put("/toggleadmin/:id", authorize, async(req,res)=> {
+    const id = req.params["id"];
+    Account.findOne({_id: id}, function(err,account) {
+        account.admin = !account.admin;
+        account.save();
+    })
+    res.send({status: "ok"});
+})
 module.exports=router;
