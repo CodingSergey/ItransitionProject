@@ -48,5 +48,12 @@ router.post("/check", async(req,res)=> {
         res.json({login:false});
     }
 })
+router.post("/checkadmin", async(req,res)=> {
+    const {_email} = req.body;
+    Account.findOne({email: _email}, function(err,account){
+        if(account.admin) res.send({admin: true});
+        else res.send({admin: false});
+    })
+})
 
 module.exports = router;
